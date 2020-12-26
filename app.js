@@ -1,4 +1,7 @@
 const express = require('express')
+const morgan =require('morgan')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 // import mongoose
 const mongoose = require('mongoose');
 // load env variables
@@ -9,6 +12,9 @@ require('dotenv').config()
 
 
 //routes/middleware
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(cookieParser())
 app.use("/api", userRoutes)
 
 const port= process.env.PORT
